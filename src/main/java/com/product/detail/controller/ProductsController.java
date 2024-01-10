@@ -26,6 +26,9 @@ public class ProductsController {
 	@Autowired
 	private ProductsService productsService;
 	
+	public ProductsController() {
+		// TODO Auto-generated constructor stub
+	}
 	@PostMapping
 	public Products addProducts(@RequestBody ProductsRequest pr) {
 		

@@ -1,0 +1,28 @@
+type Query{
+products(filter:ProductFilterInput,
+         order:ProductOrderInput):[Products]
+}
+
+input ProductFilterInput{
+	filter:FilterInput
+}
+
+input FilterInput{
+    attribute:String
+	equals:String
+}
+
+input ProductOrderInput{
+	fieldId:String
+	sort:String
+}
+
+type Products{
+productName:String
+quantityInStock:Int
+msrp:Int
+productVendor:String
+product_code:String
+productScale:String
+buyPrice:Int
+}

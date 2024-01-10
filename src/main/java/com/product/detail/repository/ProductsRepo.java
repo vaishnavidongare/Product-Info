@@ -8,14 +8,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.product.detail.entity.Products;
 
 @Repository
-public interface ProductsRepo extends JpaRepository<Products, String>,JpaSpecificationExecutor<Products> {
-
+public interface ProductsRepo extends JpaRepository<Products, String>, JpaSpecificationExecutor<Products> {
 
 	@Modifying
 	@Transactional
@@ -23,12 +22,8 @@ public interface ProductsRepo extends JpaRepository<Products, String>,JpaSpecifi
 	void saveProductDetail(String product_code, int mSRP, String productName, String productScale, String productVendor,
 			String productDescription, int quantityInStock, int buyPrice);
 
-	
-
-	//@Transactional
+	// @Transactional
 	@Query(value = "select p from Products p where p.product_code=?1")
 	List<Products> getProductsByCodeAndName(String product_code);
 
-	
-	
 }

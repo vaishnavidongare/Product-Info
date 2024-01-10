@@ -1,11 +1,9 @@
 package com.product.detail.entity;
 
-import java.util.Optional;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "products")
-public class Products {
+public class Products implements Serializable {
 	@Id
 	@Column(name = "product_code")
 	private String product_code;
@@ -128,6 +126,13 @@ public class Products {
 	}
 	public void setProductl1(Productlines productl1) {
 		this.productl1 = productl1;
+	}
+	@Override
+	public String toString() {
+		return "Products [product_code=" + product_code + ", productName=" + productName + ", productScale="
+				+ productScale + ", productVendor=" + productVendor + ", productDescrption=" + productDescrption
+				+ ", quantityInStock=" + quantityInStock + ", buyPrice=" + buyPrice + ", msrp=" + msrp + ", productl1="
+				+ productl1 + "]";
 	}
 	
 

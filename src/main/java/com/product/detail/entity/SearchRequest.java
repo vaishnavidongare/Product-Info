@@ -1,8 +1,29 @@
 package com.product.detail.entity;
 
 import java.util.List;
+import java.util.Objects;
 
 public class SearchRequest {
+	@Override
+	public String toString() {
+		return "SearchRequest [fieldIds=" + fieldIds + ", order=" + order + ", query=" + query + "]";
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(fieldIds, order, query);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SearchRequest other = (SearchRequest) obj;
+		return Objects.equals(fieldIds, other.fieldIds) && Objects.equals(order, other.order)
+				&& Objects.equals(query, other.query);
+	}
 	private List<String> fieldIds;
 	private List<SearchOrder> order;
 	private List<SearchQuery> query;

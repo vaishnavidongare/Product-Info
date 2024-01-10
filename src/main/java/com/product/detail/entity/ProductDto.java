@@ -1,17 +1,26 @@
 package com.product.detail.entity;
 
-import java.util.List;
+import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonSetter;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class ProductDto {
+public class ProductDto implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String product_code;
 	private String productName;
 	private String productScale;
 	private String productVendor;
-	private String productDescrption;
+	private String productDescription;
+	public String getProductDescription() {
+		return productDescription;
+	}
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
+	}
 	private int quantityInStock;
 	private int buyPrice;
 	private int msrp;
@@ -48,12 +57,7 @@ public class ProductDto {
 	public void setProductVendor(String productVendor) {
 		this.productVendor = productVendor;
 	}
-	public String getProductDescrption() {
-		return productDescrption;
-	}
-	public void setProductDescrption(String productDescrption) {
-		this.productDescrption = productDescrption;
-	}
+	
 	public int getQuantityInStock() {
 		return quantityInStock;
 	}
@@ -72,37 +76,27 @@ public class ProductDto {
 	public void setMsrp(int msrp) {
 		this.msrp = msrp;
 	}
-//	public ProductDto(Products products,List<String> fieldIds)
-//	{
-//		for(String fieldId:fieldIds) {
-//		switch (fieldId) {
-//		case "product_code":
-//			this.product_code=products.getProduct_code();
-//			break;
-//		case "buyPrice":
-//			this.buyPrice=products.getBuyPrice();
-//			break;
-//		case "msrp":
-//			this.msrp=products.getMsrp();
-//			break;
-//		case "productName":
-//			this.productName=products.getProductName();
-//			break;
-//		case "productScale":
-//			this.productScale=products.getProductScale();
-//			break;
-//		case "productVendor":
-//			this.productVendor=products.getProductVendor();
-//			break;
-//		case "productDescription":
-//			this.productDescrption=products.getProductDescrption();
-//			break;
-//		case "quantityInStock":
-//			this.quantityInStock=products.getQuantityInStock();
-//			break;
-//		default:
-//			break;
-//		}
-//	}
+	public ProductDto(String product_code, String productName, String productScale, String productVendor,
+			String productDescription, int quantityInStock, int buyPrice, int msrp, Productlines p) {
+		super();
+		this.product_code = product_code;
+		this.productName = productName;
+		this.productScale = productScale;
+		this.productVendor = productVendor;
+		this.productDescription = productDescription;
+		this.quantityInStock = quantityInStock;
+		this.buyPrice = buyPrice;
+		this.msrp = msrp;
+		this.p = p;
+	}
+	public ProductDto() {
+		// TODO Auto-generated constructor stub
+	}
+	public ProductDto(String productName, int buyPrice) {
+		// TODO Auto-generated constructor stub
+		this.productName=productName;
+		this.buyPrice=buyPrice;
+	}
+	
 }
 

@@ -1,13 +1,12 @@
 package com.product.detail.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -16,7 +15,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "productlines")
-public class Productlines {
+public class Productlines implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "product_line")
 	private String product_line;
@@ -61,6 +64,13 @@ public class Productlines {
 		this.products = products;
 	}
 
+	public Productlines(String product_line, String textDescription, String htmlDescription, String image) {
+		super();
+		this.product_line = product_line;
+		this.textDescription = textDescription;
+		this.htmlDescription = htmlDescription;
+		this.image = image;
+	}
 	public Productlines(String product_line, String image, List<Products> products) {
 		super();
 		this.product_line = product_line;

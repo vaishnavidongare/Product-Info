@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.product.detail.dto.ProductsRequest;
@@ -25,7 +26,7 @@ public class ProductsService {
 		
 		Productlines p = new Productlines();
 		Optional<Productlines> productlines = productLinesRepo.findById(pr.p_line);
-		// Productlines productlines = null;
+		//Productlines productlines = null;
 		if (productlines.isPresent()) {
 			p = productlines.get();
 		}
@@ -56,6 +57,7 @@ public class ProductsService {
 				quantityInStock, buyPrice);
 	}
 
+	@Cacheable(value = "searchDataCache", key = "#product_code")
 	public List<Products> getProductsByCodeAndName(String product_code) {
 		// TODO Auto-generated method stub
 		 return   productsRepo.getProductsByCodeAndName(product_code);
